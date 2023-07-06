@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Temperature Converter</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            #d1{
+                background-color: burlywood;
+                width: 100%;
+                height: 50px;
+            }
+            #d2{
+                width: 100%;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body style="background-color:blanchedalmond">
+        <div id="d1">
+            <center><h1 style="color:darkblue;">Temperature Converter</h1></center>
+        </div>
+        <div id="d2">
+            <center><h1 style="font-size: 50px;">Conversion Table <i class="fa fa-calculator"></i></h1></center>        
+        </div>
+        <center>
+            <table border="0" cellpadding="10px" cellspacing="10px">
+                    <tr>
+                        <th><center><h2 style="color: brown;font-style:inherit;">From : </h2></center></th>
+                        <th>
+                            <select id="c1">
+                                <option value="0">Select</option>
+                                <option value="1">Celsuis</option>
+                                <option value="2">Fahrenheit</option>
+                                <option value="3">Kelvin</option>
+                                <option value="4">Rankine</option>
+                            </select>
+                        </th>
+                        <th><center><h2 style="color: brown;font-style:inherit">To : </h2></center></th>
+                        <th>
+                            <select id="c2">
+                                <option value="0">Select</option>
+                                <option value="1">Celsuis</option>
+                                <option value="2">Fahrenheit</option>
+                                <option value="3">Kelvin</option>
+                                <option value="4">Rankine</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><center><h2 style="color:brown;">Enter the Value : </h2></center></td>
+                        <td><input type="number" name="val" id="t1"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button onclick="display()">Submit</button></td>
+                    </tr>
+				<tr>
+					<td colspan="2"><center><h2 style="color:brown;">Result : </h2></center></td>
+					<td><div id="d1"><h1 id="display" style="color:darkblue;"></h1></div></td>
+				</tr>
+            </table>
+        </center>
+		
+<script>
+function display()
+{
+	var first=document.getElementById("c1");
+	var a1=first.value;
+	let a=parseInt(a1);
+	var second=document.getElementById("c2");
+	var b1=second.value;
+	let b=parseInt(b1)
+	var v1=document.getElementById("t1");
+	var c1=v1.value;
+	let c=parseFloat(c1);
+	let res;
+	if(a==b || a==0 || b==0)
+	{
+        alert ("Change the From and To options");
+	}
+	else if(a==1)
+	{
+			if(b==2)
+			{
+				res=((((9/5)*c)+32).toFixed(2));
+				document.getElementById('display').innerHTML = res +" <sup>o</sup>F";
+			}
+			if(b==3)
+			{
+				res=((c+273.15).toFixed(2));
+				document.getElementById('display').innerHTML = res +" K";
+			}
+			if(b==4)
+			{
+				res=((((9/5)*c)+491.67).toFixed(2));
+				document.getElementById('display').innerHTML = res +" <sup>o</sup>R";
+			}
+	}
+	else if(a==2)
+	{
+		
+		if(b==1)
+		{
+			res=(((c-32)*(5/9)).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>C";
+		}
+		if(b==3)
+		{
+			res=(((c+459.67)*(5/9)).toFixed(2));
+			document.getElementById('display').innerHTML = res +" K";
+		}
+		if(b==4)
+		{
+			res=((c+459.67).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>R";
+		}
+	}
+	else if(a==3)
+	{
+		if(b==1)
+		{
+			res=((c-273.15).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>C";
+		}
+		if(b==2)
+		{
+			res=((((9/5)*c)-459.67).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>F";
+		}
+		if(b==4)
+		{
+			res=(((9/5)*c).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>R";
+		}
+	}
+	else
+	{
+		if(b==1)
+		{
+			res=((((5/9)*c)-273.15).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>C";
+		}
+		if(b==2)
+		{
+			res=((c-459.67).toFixed(2));
+			document.getElementById('display').innerHTML = res +" <sup>o</sup>F";
+		}
+		if(b==3)
+		{
+			res=((c*(5/9)).toFixed(2));
+			document.getElementById('display').innerHTML = res +" K";
+		}
+	}
+	
+					
+}
+
+		
+</script>
+</body>
+</html>
